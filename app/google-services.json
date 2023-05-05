@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019882289932",
+    "project_id": "quiz-app-20acf",
+    "storage_bucket": "quiz-app-20acf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019882289932:android:fcfe251cf1fc97abf3e729",
+        "android_client_info": {
+          "package_name": "com.web2hack.quizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019882289932-s1el2jlo1p36nlaealm4usoj4ld1vgpg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsa_YP2aRKxWEjCuWXv1I6YI-JxtO6Wps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019882289932-s1el2jlo1p36nlaealm4usoj4ld1vgpg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
