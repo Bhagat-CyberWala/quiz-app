@@ -35,7 +35,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     private QuestionViewModel viewModel;
     private NavController navController;
     private ProgressBar progressBar;
-    private Button option1Btn , option2Btn , option3Btn , nextQueBtn;
+    private TextView option1Btn , option2Btn , option3Btn ,option4Btn, nextQueBtn;
     private TextView questionTv , ansFeedBackTv , questionNumberTv , timerCountTv,wrongansFeedbackTv;
     private ImageView closeQuizBtn;
     private String quizId;
@@ -77,6 +77,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         option1Btn = view.findViewById(R.id.option1Btn);
         option2Btn = view.findViewById(R.id.option2Btn);
         option3Btn = view.findViewById(R.id.option3Btn);
+        option4Btn = view.findViewById(R.id.option4Btn);
         nextQueBtn = view.findViewById(R.id.nextQueBtn);
         ansFeedBackTv = view.findViewById(R.id.ansFeedbackTv);
         questionTv = view.findViewById(R.id.quizQuestionTv);
@@ -94,6 +95,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         option1Btn.setOnClickListener(this);
         option2Btn.setOnClickListener(this);
         option3Btn.setOnClickListener(this);
+        option4Btn.setOnClickListener(this);
         nextQueBtn.setOnClickListener(this);
 
         closeQuizBtn.setOnClickListener(new View.OnClickListener() {
@@ -115,12 +117,14 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         option1Btn.setVisibility(View.VISIBLE);
         option2Btn.setVisibility(View.VISIBLE);
         option3Btn.setVisibility(View.VISIBLE);
+        option4Btn.setVisibility(View.VISIBLE);
 
         //enable buttons , hide feedback tv , hide nextQuiz btn
 
         option1Btn.setEnabled(true);
         option2Btn.setEnabled(true);
         option3Btn.setEnabled(true);
+        option4Btn.setEnabled(true);
 
         ansFeedBackTv.setVisibility(View.INVISIBLE);
         nextQueBtn.setVisibility(View.INVISIBLE);
@@ -136,6 +140,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
                 option1Btn.setText(questionModels.get(i - 1).getOption_a());
                 option2Btn.setText(questionModels.get(i - 1).getOption_b());
                 option3Btn.setText(questionModels.get(i - 1).getOption_c());
+                option4Btn.setText(questionModels.get(i - 1).getOption_d());
                 timer = questionModels.get(i-1).getTimer();
                 answer = questionModels.get(i-1).getAnswer();
 
@@ -190,13 +195,16 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.option1Btn:
-                verifyAnswer(option1Btn);
+                verifyAnswer( option1Btn);
                 break;
             case R.id.option2Btn:
                 verifyAnswer(option2Btn);
                 break;
             case R.id.option3Btn:
                 verifyAnswer(option3Btn);
+                break;
+            case R.id.option4Btn:
+                verifyAnswer(option4Btn);
                 break;
             case R.id.nextQueBtn:
                 if (currentQueNo == totalQuestions){
@@ -213,10 +221,12 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     private void resetOptions(){
         ansFeedBackTv.setVisibility(View.INVISIBLE);
         nextQueBtn.setVisibility(View.INVISIBLE);
+        wrongansFeedbackTv.setVisibility(View.INVISIBLE);
         nextQueBtn.setEnabled(false);
         option1Btn.setBackground(ContextCompat.getDrawable(getContext() , R.drawable.btn_bg));
         option2Btn.setBackground(ContextCompat.getDrawable(getContext() , R.drawable.btn_bg));
         option3Btn.setBackground(ContextCompat.getDrawable(getContext() , R.drawable.btn_bg));
+        option4Btn.setBackground(ContextCompat.getDrawable(getContext() , R.drawable.btn_bg));
     }
 
     private void submitResults() {
@@ -234,7 +244,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    private void verifyAnswer(Button button){
+    private void verifyAnswer(TextView button){
         if (canAnswer){
             if (answer.equals(button.getText())){
                 button.setBackground(ContextCompat.getDrawable(getContext() , R.drawable.green_btn_bg));

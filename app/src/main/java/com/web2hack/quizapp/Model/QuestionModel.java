@@ -6,7 +6,7 @@ public class QuestionModel {
 
     @DocumentId
     private String questionId;
-    private String answer , question , option_a , option_b , option_c;
+    private String answer , question , option_a , option_b , option_c, option_d;
     private long timer;
 
     public QuestionModel(){}
@@ -54,9 +54,13 @@ public class QuestionModel {
     public String getOption_c() {
         return option_c;
     }
-
     public void setOption_c(String option_c) {
         this.option_c = option_c;
+    }
+
+    public String getOption_d(){return option_d;}
+    public void setOption_d(String option_d){
+        this.option_d = option_d;
     }
 
     public long getTimer() {
